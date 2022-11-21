@@ -16,6 +16,7 @@ const config: webpack.Configuration = {
     environment: {
       arrowFunction: false,
     },
+    publicPath: '/',
   },
   mode: NODE_ENV,
   resolve: {
@@ -43,6 +44,7 @@ const config: webpack.Configuration = {
     compress: true,
     port: 9000,
     watchFiles: ["public/index.html"],
+    historyApiFallback: true,
   },
 };
 
