@@ -7,6 +7,8 @@ type Mode = "none" | "development" | "production" | undefined;
 
 const NODE_ENV: Mode = process.env.NODE_ENV as Mode;
 
+const PREFIX = '/js-spa-deploy--js-basic.06.2022';
+
 const config: webpack.Configuration = {
   entry: "./src/index.ts",
   output: {
@@ -16,7 +18,7 @@ const config: webpack.Configuration = {
     environment: {
       arrowFunction: false,
     },
-    publicPath: '/',
+    publicPath: NODE_ENV == 'development' ? '/' : PREFIX,
   },
   mode: NODE_ENV,
   resolve: {
@@ -39,6 +41,10 @@ const config: webpack.Configuration = {
     new HtmlWebpackPlugin({
       template: "public/index.html",
     }),
+    new webpack.DefinePlugin({
+      PRODUCTION: NODE_ENV == 'production',
+      PREFIX: JSON.stringify(PREFIX),
+    })
   ],
   devServer: {
     compress: true,

@@ -8,6 +8,12 @@ function render(hash?: string) {
     : window.location.href;
 }
 
+if (PRODUCTION) {
+  document.querySelectorAll('a').forEach((link) => {
+    link.href = PREFIX + link.pathname;
+  })
+}
+
 document.body.addEventListener("click", (ev) => {
   if ((ev.target as HTMLElement).matches("a")) {
     const hash = (ev.target as HTMLAnchorElement).hash;
@@ -23,3 +29,4 @@ document.body.addEventListener("click", (ev) => {
 });
 
 render();
+ 
