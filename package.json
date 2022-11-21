@@ -1,0 +1,36 @@
+{
+  "name": "webpack-gh-pages",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "start:dev": "nodemon --watch ./webpack.config.ts --exec webpack serve --define-process-env-node-env development",
+    "build:dev": "webpack --define-process-env-node-env development",
+    "build": "webpack --define-process-env-node-env production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-typescript": "^7.13.0",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-dev-server": "^4.7.2",
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.3.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.3.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.9.1"
+  },
+  "lint-staged": {
+    "*.{js,css,md,html,ts}": "prettier --write"
+  }
+}
